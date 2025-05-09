@@ -1,0 +1,54 @@
+# ==========================
+# Unreal Engine
+# ==========================
+# Folders to ignore
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+
+# Project files
+*.sln
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.xcodeproj
+*.xcworkspace
+*.xcconfig
+*.csproj
+*.vcxproj
+*.vcxproj.filters
+*.uprojectdirs
+
+# User-specific settings
+*.user
+*.userprefs
+*.suo
+*.ncb
+*.log
+*.tlog
+
+# IDE folders
+.vscode/
+.vs/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Lock files
+*.lock
+~$*
+
+# Crash reports or temporary files
+*.tmp
+*.bak
+*.orig
+
+# Backup files
+*.backup
