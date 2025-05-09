@@ -21,29 +21,29 @@
 
 ---
 
-## 📁 Project Structure
-EscapeFromF/
-├── .gitignore
-├── README.md
-├── ToDoList.md
-├── Src/
-| ├── backend/
-│   ├── Game.cpp
-│   ├── Player.h 
-│   ├── Board.h 
-│   ├── Tile.h 
-│   ├── Action/
-│   │ ├── Action.h (Interface)
-│   │ ├── AddScore.h 
-│   │ ├── SubtractScore.h 
-│   │ ├── ExtraClass.h 
-│   │ └── AcademicLeave.h 
-│   └── Deck/
-│   ├── Deck.h 
-│   └── Card.h 
-| ├── frontend/
-└── Docs/
-    └──UML Class Diagram.png
+📁 **Project Structure**
+
+- `.gitignore`
+- `README.md`
+- `ToDoList.md`
+- `Src/`
+  - `backend/`
+    - `Game.cpp`
+    - `Player.h`
+    - `Board.h`
+    - `Tile.h`
+    - `Action/`
+      - `Action.h` – Interface
+      - `AddScore.h`
+      - `SubtractScore.h`
+      - `ExtraClass.h`
+      - `AcademicLeave.h`
+    - `Deck/`
+      - `Deck.h`
+      - `Card.h`
+  - `frontend/`
+- `Docs/`
+  - `UML Class Diagram.png`
 
 ## Submission Date
 - **Project Submitted** 28/5/68
