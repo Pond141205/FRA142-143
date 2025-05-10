@@ -28,7 +28,8 @@
 - `ToDoList.md`
 - `Src/`
   - `backend/`
-    - `Game.cpp`
+    - `Main.cpp`
+    - `Game.h`
     - `Player.h`
     - `Board.h`
     - `Tile.h`
