@@ -4,6 +4,6 @@ class Player;  // Forward declaration เพื่อหลีกเลี่ย
 
 class Action {
 public:
-    virtual void Execute(Player& player) = 0;
+    virtual void Execute(Player& player , Deck& deck) = 0;
     virtual ~Action() = default;
 };
