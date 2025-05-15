@@ -13,13 +13,13 @@ void Card::affect(Player& player) {
         int answer;
         std::cin >> answer;
         if (answer - 1 == correct_) {
-                // //  if (score_ < 100){
-                //     std::cout << "Correct! +" << increase_ << " points." << std::endl;
-                //     player.updateScore(increase_);
-                //  }
-                //  if (score_ = 100){
-                //      std::cout << "Correct! ... But your points are limited. + " << 0 << "points." << std::endl;
-                //  } รอแก้
+                 if (player.getScore() < 100){
+                    std::cout << "Correct! +" << increase_ << " points." << std::endl;
+                    player.updateScore(increase_);
+                 }
+                 if (player.getScore() == 100){
+                     std::cout << "Correct! ... But your points are limited. + " << 0 << "points." << std::endl;
+                 } 
         } else {
             std::cout << "Wrong! " << decrease_ << " points." << std::endl;
             player.updateScore(decrease_);
