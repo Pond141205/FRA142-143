@@ -17,6 +17,10 @@ void Game::setupPlayers(int numPlayers){
         Player newPlayer(name);
         players_.push_back(newPlayer);
     }
+
+    // for (int i = 0; i < players_.size(); ++i){
+    //      std::cout << "Player " << (i + 1) << ": " << players_[i].getName() << std::endl;
+    // }
 }
 
 
@@ -45,3 +49,6 @@ bool Game::checkGameEnd() {
     return true;
 }
 
+const std::vector<Player>& Game::getPlayers() const{
+    return players_;
+}

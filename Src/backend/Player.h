@@ -1,7 +1,6 @@
 #pragma once
-#include "Game.h"
 
-#include <String>
+#include <string>
 
 
 class Player {
@@ -10,6 +9,7 @@ public:
 
     void move(int step);
     void updateScore(int points);
+    std::string getName() const;
     int getPosition() const;
     int getScore() const;
 

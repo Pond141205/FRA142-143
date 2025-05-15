@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Player.h"
-#include "Board.h"
-#include "Deck.h"
-#include "Action/Action.h"
+//#include "Board.h"
+//#include "Deck.h"
+//#include "Action/Action.h"
 
 #include <vector>
 #include <memory>
@@ -18,6 +18,7 @@ public:
     void nextTurn();
     int rollDice();
     bool checkGameEnd();
+    const std::vector<Player>& getPlayers() const;
 
 private:
     std::vector<Player> players_;
