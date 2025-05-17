@@ -29,10 +29,8 @@
 - `Src/`
   - `backend/`
     - `Main.cpp`
-    - `Game.h`
-    - `Player.h`
-    - `Board.h`
-    - `Tile.h`
+    - `Core.h`
+    - `Core.cpp`
     - `Action/`
       - `Action.h` – Interface
       - `AddScore.h`
@@ -42,6 +40,8 @@
     - `Deck/`
       - `Deck.h`
       - `Card.h`
+      - `Deck.cpp`
+      - `Card.cpp`
   - `frontend/`
 - `Docs/`
   - `UML Class Diagram.png`
