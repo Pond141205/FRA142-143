@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Player.h"
 //#include "Board.h"
 //#include "Deck.h"
 //#include "Action/Action.h"
 
 #include <vector>
 #include <memory>
+#include <string>
 
 
 class Game{
@@ -25,4 +25,24 @@ private:
     //Board board_;   กำลังสร้างมองข้ามไปก่อน
     //Deck deck_;     กำลังสร้างมองข้ามไปก่อน
     int currentPlayerIndex_;
+};
+
+
+
+class Player {
+public:
+    Player(const std::string& name);
+
+    void move(int step);
+    void updateScore(int points);
+    std::string getName() const;
+    int getPosition() const;
+    int getScore() const;
+
+
+private:
+
+    std::string name_;
+    int position_;
+    int score_;
 };

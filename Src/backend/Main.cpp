@@ -43,5 +43,5 @@ int main() {
     } while (option == 'r');
 
     return 0;
-}rd /s /q .git\rebase-merge
+}
 

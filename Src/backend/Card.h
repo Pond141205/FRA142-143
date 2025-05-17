@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "Player.h"
+#include "Core.h"
 
 class Card {
 
