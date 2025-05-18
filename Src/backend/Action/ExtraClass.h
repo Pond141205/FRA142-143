@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Action.h"
-#include "../Player.h"
+#include "Core.h"
 #include "Deck.h"
 
 class ExtraClass : public Action {

@@ -1,6 +1,13 @@
 #pragma once
 
 #include "Action.h"
-#include "../Player.h"
+
+
+class AcademicLeave : public Action {
+public:
+    AcademicLeave(Player& player) : Action(player) {}
+
+    bool Execute() override;
+};
 
 

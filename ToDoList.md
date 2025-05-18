@@ -15,9 +15,9 @@
 - [x] ฟังก์ชันอัปเดตคะแนน (`updateScore`)
 
 ### 🧠 Action System
-- [ ] สร้าง Interface `Action`
-- [ ] สร้าง subclass `AddScore`
-- [ ] สร้าง subclass `SubtractScore`
+- [x] สร้าง Interface `Action`
+- [x] สร้าง subclass `AddScore`
+- [x] สร้าง subclass `SubtractScore`
 - [ ] เชื่อม `Action` เข้ากับ `Tile`
 
 ### 🧪 Testing

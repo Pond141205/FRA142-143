@@ -39,10 +39,16 @@ public:
     int getPosition() const;
     int getScore() const;
 
+    void skipNextTurn();           
+    bool shouldSkipTurn() const;  
+    void resetSkipTurn();         
+
+
 
 private:
 
     std::string name_;
     int position_;
     int score_;
+    bool skip_turn_;
 };

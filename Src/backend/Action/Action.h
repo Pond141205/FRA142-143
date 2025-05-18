@@ -1,9 +1,14 @@
 #pragma once
-
-class Player;  // Forward declaration เพื่อหลีกเลี่ยง include ซ้ำ
+#include "Core.h"
+#include "Deck.h"
 
 class Action {
 public:
-    virtual void Execute(Player& player , Deck& deck) = 0;
-    virtual ~Action() = default;
+    Action(Player& player) : player_(&player) {}
+
+    virtual bool Execute() {return true; }
+
+protected:
+    Player* player_;
+    
 };

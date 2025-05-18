@@ -57,7 +57,7 @@ const std::vector<Player>& Game::getPlayers() const{
 
 
 Player::Player(const std::string& name)
-    : name_(name), position_(0), score_(100) {}
+    : name_(name), position_(0), score_(100), skip_turn_(false) {}
 
 void Player::move(int steps) {
     position_ += steps;
@@ -77,5 +77,17 @@ int Player::getPosition() const {
 
 int Player::getScore() const {
     return score_;
+}
+
+void Player::skipNextTurn() {
+    skip_turn_ = true;
+}
+
+bool Player::shouldSkipTurn() const {
+    return skip_turn_;
+}
+
+void Player::resetSkipTurn() {
+    skip_turn_ = false;
 }
 
