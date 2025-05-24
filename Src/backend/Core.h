@@ -9,24 +9,6 @@
 #include <string>
 
 
-class Game{
-public:
-    Game();
-
-    void setupPlayers(int numPlayers);
-    void startGame();
-    void nextTurn();
-    int rollDice();
-    bool checkGameEnd();
-    const std::vector<Player>& getPlayers() const;
-
-private:
-    std::vector<Player> players_;
-    //Board board_;   กำลังสร้างมองข้ามไปก่อน
-    //Deck deck_;     กำลังสร้างมองข้ามไปก่อน
-    int currentPlayerIndex_;
-};
-
 
 
 class Player {
@@ -52,3 +34,26 @@ private:
     int score_;
     bool skip_turn_;
 };
+
+
+
+class Game{
+public:
+    Game();
+
+    void setupPlayers(int numPlayers);
+    void startGame();
+    void nextTurn();
+    int rollDice();
+    bool checkGameEnd();
+    const std::vector<Player>& getPlayers() const;
+
+private:
+    std::vector<Player> players_;
+    //Board board_;   กำลังสร้างมองข้ามไปก่อน
+    //Deck deck_;     กำลังสร้างมองข้ามไปก่อน
+    int currentPlayerIndex_;
+};
+
+
+

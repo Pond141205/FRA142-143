@@ -1,5 +1,14 @@
-#include "Game.h"
+#include "Core.h"
 #include <iostream>
+
+/*How to complie "g++ Main.cpp Core.cpp -o Main" 
+>> ./Main   */
+
+
+
+
+
+
 
 int main() {
     char option;
