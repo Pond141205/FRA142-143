@@ -6,9 +6,9 @@
 
 class ExtraClass : public Action {
     public :
-        void Execute(Player& player , Deck& deck) override {
-            Card drawcard = deck.drawCard();
+        void Execute(Player& player , Deck& deck) {
+            // Card drawcard = deck.drawCard();
 
-            drawcard.affect(player);
+            // drawcard.affect(player);
         }
 };
