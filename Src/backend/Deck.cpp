@@ -2,42 +2,41 @@
 #include "Card.h"
 
 Deck :: Deck(){
-        Card question1("Math Challenge", "What is 2 + 2?", {"3", "4", "5", "6"}, 1);
+        Card question1("Math Challenge", "What is the derivative of f(x)=x^2+3x+2", {"2x+3", "x^2", "2x+6", "x+3"}, 1);
         cards_.push_back(question1);
 
-        Card question2("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question2("Science Challenge", "Which one is not a mammal?", {"Dolphin", "Shark", "Sea lions", "walrus"}, 2);
         cards_.push_back(question2);
 
-        Card question3("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question3("Science Challenge", "Which particle is the smallest in size?", {"Electron", "Atom", "Quark", "Neutron"}, 3);
         cards_.push_back(question3);
 
-        Card question4("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question4("Science Challenge", "Which of the following is a compound?", {"O₂", "H₂O", "Au", "Al"}, 2);
         cards_.push_back(question4);
 
-        Card question5("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question5("Programming Challenge", "The command 'scanf' belongs to which programming language?", {"Python", "Java", "C++", "C"}, 4);
         cards_.push_back(question5);
 
-        Card question6("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question6("Electronics Challenge", "Which formula is used to calculate the electricity consumption unit for billing?", {"P*t", "(P+220)1000", "(P/1000)*I", "(P*t)/1000"}, 4);
         cards_.push_back(question6);
 
-        Card question7("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question7("Science Challenge", "Who is the founder of quantum mechanics theory?", {"Albert Einstein", "Galileo Galilei", "Erwin Schrödinger", "Isaac Newton"}, 3);
         cards_.push_back(question7);
 
-        Card question8("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question8("Art Challenge", "Who is the creator of the artwork 'Starry Night'?", {"Vincent van Gogh", "Leonardo da Vinci", "Claude Monet", "Pablo Picasso"}, 1);
         cards_.push_back(question8);
 
-        Card question9("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question9("Science Challenge", "Which organ in the human body is primarily responsible for breaking down alcohol?", {"Stomach", "Kidney", "Liver", "Pancreas"}, 3);
         cards_.push_back(question9);
 
-        Card question10("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question10("Science Challenge", "Which hormone is most commonly released in the body when a person is in love?", {"Oxytocin", "Adrenaline", "Cortisol", "Endorphin"}, 1);
         cards_.push_back(question10);
 
-        Card question11("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question11("Electronics Challenge", "Which device is used to generate electrical signals with low current?", {"Multimeter", "Oscilloscope", "Power supply", "Function generator"}, 4);
         cards_.push_back(question11);
 
-        Card question12("Capital City", "What is the capital of France?", {"Berlin", "London", "Paris", "Rome"}, 2);
+        Card question12("Programming Challenge", "Which programming language is commonly used to create web pages along with HTML and CSS?", {"Java", "JavaScript", "C++", "Python"}, 2);
         cards_.push_back(question12);
-
         std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 

@@ -1,7 +1,7 @@
 #pragma once
 
 //#include "Board.h"
-//#include "Deck.h"
+#include "Deck.h"
 //#include "Action/Action.h"
 
 #include <vector>
