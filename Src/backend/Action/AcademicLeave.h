@@ -5,9 +5,9 @@
 
 class AcademicLeave : public Action {
 public:
-    AcademicLeave(Player& player) : Action(player) {}
+    AcademicLeave() {}
 
-    bool Execute() override;
+    bool Execute(Player& player, Deck& deck) override;
 };
 
 

@@ -1,14 +1,15 @@
 #pragma once
 
 //#include "Board.h"
-#include "Deck.h"
-//#include "Action/Action.h"
+#include "Action/Action.h"
 
 #include <vector>
 #include <memory>
 #include <string>
 
-
+class Deck; // Forward declaration
+class Card; // Forward declaration
+class Action;
 
 
 class Player {
@@ -44,16 +45,54 @@ public:
     void setupPlayers(int numPlayers);
     void startGame();
     void nextTurn();
+
+    Card drawCard();
+
     int rollDice();
     bool checkGameEnd();
     const std::vector<Player>& getPlayers() const;
 
 private:
     std::vector<Player> players_;
-    //Board board_;   กำลังสร้างมองข้ามไปก่อน
-    //Deck deck_;     กำลังสร้างมองข้ามไปก่อน
+    //Board board_;   
+    Deck* deck_;     
     int currentPlayerIndex_;
 };
 
+
+
+class tile {
+public:
+    tile(int index, Action* action) : index_(index), action_(action){}
+    
+    void triggerAction(Player& player, Deck& deck);
+
+    int getIndex() const { return index_; }
+
+    // Action getAction() const { return action_; }
+
+    // void setAction(const Action& action) { action_ = action; }
+
+    bool hasAction() const ;
+
+private:
+    int index_;
+    Action* action_;;
+    
+};
+
+
+class Board {
+public:
+    Board();
+    
+    void printBoard() const;
+        
+    int getSize() const { return size_; };
+
+private:
+    int size_ = 50; // Example size, can be adjusted
+    std::vector<tile> tiles_; // Vector of tiles on the board
+};
 
 

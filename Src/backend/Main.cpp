@@ -1,7 +1,20 @@
 #include "Core.h"
+#include "Deck.h"
+#include "Card.h"
+#include "Action/Action.h"
+#include "Action/ExtraClass.h"
+#include "Action/AcademicLeave.h"
+#include "Action/SubtractScore.h"
+#include "Action/AddScore.h"
 #include <iostream>
 
-/*How to complie "g++ Main.cpp Core.cpp -o Main" 
+/*How to complie "g++ Main.cpp Core.cpp Deck.cpp Card.cpp Action\Action.cpp -o Main
+   How to run the program
+   1. Open a terminal.
+   2. Navigate to the directory where the files are located.
+   3. Compile the code using the command:
+      g++ Main.cpp Core.cpp Deck.cpp Card.cpp Action/Action.cpp -o Main
+   4. Run the program using the command:" 
 >> ./Main   */
 
 
@@ -11,6 +24,7 @@
 
 
 int main() {
+    
     // char option;
     // do {
     //     Game game;
@@ -29,14 +43,14 @@ int main() {
     //         if (option == 'y') {
     //             int roll = game.rollDice();
     //             std::cout << "Roll Dice: " << roll << std::endl;
-    //             // สมมุติให้ผู้เล่นคนปัจจุบันเดิน
-    //             // คุณต้องมีฟังก์ชันใน Game เช่น getCurrentPlayer() เพื่อเอา player มาขยับ
-    //             // หรือต้องมี player.move(roll) ด้วย
+    //             // 
+    //             //  Game  getCurrentPlayer()  player 
+    //             //  player.move(roll)
 
-    //             game.nextTurn(); // ไปผู้เล่นถัดไป
+    //             game.nextTurn(); // 
     //         } else if (option == 'r') {
     //             std::cout << "Restarting game...\n";
-    //             break; // ออกจาก while เพื่อเริ่มใหม่
+    //             break; // while 
     //         } else if (option == 'q') {
     //             std::cout << "Quitting game...\n";
     //             return 0;
@@ -51,10 +65,10 @@ int main() {
 
     // } while (option == 'r');
 
-    Deck D;
-    D.shuffle();
-    D.drawCard();
-    
+      Action* action = new ExtraClass();
+      action->Execute(*(new Player("Player1")), *(new Deck()));
+      delete action; // Clean up dynamically allocated memory
+
 
     return 0;
 }

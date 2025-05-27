@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <random>
 #include <ctime>
+#include "Core.h"
 #include "Card.h"
 #include <iostream>
 
@@ -10,13 +11,16 @@ class Card;
 
 class Deck {
 private:
-    std::vector<Card> cards_;
+    std::vector<Card> deck_;
 
 public:
 
-    Deck(){}
+    Deck();
+    
+    void setCard();
 
-    void shuffle() {}
+    void shuffle();
 
-    Card drawCard() {}
+    Card drawCard();
 };
+

@@ -1,14 +1,16 @@
 #pragma once
-#include "Core.h"
-#include "Deck.h"
+#include "../Core.h"
+#include "../Deck.h"
+
+class Player;
+class Deck;
 
 class Action {
 public:
-    Action(Player& player) : player_(&player) {}
-
-    virtual bool Execute() {return true; }
-
-protected:
-    Player* player_;
+    // Action(Player& player) : player_(&player) {}
+    Action() {}
+    virtual ~Action() {}
     
+    virtual bool Execute(Player& player, Deck& deck) {return true; }
+   
 };

@@ -1,4 +1,11 @@
 #include "Core.h"
+#include "Deck.h"
+#include "Card.h"
+#include "Action/Action.h"
+#include "Action/AcademicLeave.h"
+#include "Action/SubtractScore.h"
+#include "Action/AddScore.h"
+#include "Action/ExtraClass.h"
 #include <cstdlib>   //  rand()
 #include <ctime>     //  srand()
 #include <iostream>
@@ -53,6 +60,13 @@ const std::vector<Player>& Game::getPlayers() const{
     return players_;
 }
 
+Card Game::drawCard() {
+    if (!deck_) {
+        deck_ = new Deck();
+        deck_->setCard();
+    }
+    return deck_->drawCard();
+}
 
 
 
@@ -91,3 +105,44 @@ void Player::resetSkipTurn() {
     skip_turn_ = false;
 }
 
+
+
+Board::Board()  {
+std::vector<Action*> actionPool;
+
+    
+    for (int i = 0; i < 3; ++i) actionPool.push_back(new AcademicLeave());
+    for (int i = 0; i < 5; ++i) actionPool.push_back(new SubtractScore());
+    for (int i = 0; i < 3; ++i) actionPool.push_back(new AddScore());
+    for (int i = 0; i < 10; ++i) actionPool.push_back(new ExtraClass());
+
+    
+    std::shuffle(actionPool.begin(), actionPool.end(), std::default_random_engine(static_cast<unsigned>(time(nullptr))));
+
+    int actionIndex = 0;
+
+    for (int i = 0; i < size_; ++i) {
+        Action* action = nullptr;
+
+        if (i % 3 == 0 && i != 0 && actionIndex < actionPool.size()) {
+            action = actionPool[actionIndex++];
+        }
+
+        tiles_.emplace_back(i, action);
+    }
+}
+
+void Board::printBoard() const {
+    for (const auto& tile : tiles_) {
+        std::cout << "Tile " << tile.getIndex() << ": ";
+        if (tile.hasAction()) {
+            std::cout << "Action available.\n";
+        } else {
+            std::cout << "No action.\n";
+        }
+    }
+}
+
+bool tile::hasAction() const {
+    return action_ != nullptr;
+}

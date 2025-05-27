@@ -6,11 +6,12 @@
 
 class SubtractScore : public Action {
 public:
-    SubtractScore(Player& player, int point) : Action(player), point_(point) {}
+    SubtractScore() {}
+   
 
-    bool Execute() override;
+    bool Execute(Player& player, Deck& deck) override;
 
 private:
-int point_;
+int point_ = 20;
 
 };
