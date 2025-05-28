@@ -1,85 +1,3 @@
-# 🎓 Escape from F - Terminal Board Game
-
-A fun and strategic turn-based board game simulating a university student’s journey! Roll the dice, face academic challenges, answer quiz questions, and compete with friends to escape from F (Failure) and achieve the highest score.
-
----
-
-## 📁 Program Documentation
-
-### Main Files & Folders
-
-#### `Src/backend/`
-- **Main.cpp**  
-  Entry point of the game. Handles game initialization, the main loop, and user interaction.
-
-- **Core.h / Core.cpp**  
-  Core game logic and main classes:
-  - `Game`: Manages players, turn order, and game progress.
-  - `Player`: Stores each player’s name, score, position, and status.
-  - `Board`: Represents the 10x5 tile board.
-  - `Tile`: Represents individual tiles on the board, each of which may trigger an action.
-
-#### `Src/backend/Action/`
-- **Action.h**  
-  Abstract base class (interface) for all tile actions.
-- **AddScore / SubtractScore**  
-  Actions that increase or decrease a player's score.
-- **ExtraClass**  
-  Triggers drawing and answering a random multiple-choice question card.
-- **AcademicLeave**  
-  Skips the player's next turn to simulate "academic leave".
-
-#### `Src/backend/Deck/`
-- **Deck**  
-  Manages card drawing and shuffling.
-- **Card**  
-  Represents a question card with a category, multiple choices, and the correct answer.
-
-#### `Src/frontend/`
-- (Reserved for future Unreal Engine 5 integration.)
-
-#### `Docs/`
-- **UML Class Diagram.png**  
-  A visual overview of class structure and relationships.
-
----
-
-## 🕹️ How to Play
-
-1. **Start the Game**
-   - Run the game with: `./main`
-   - Enter the number of players (2–4).
-   - Input each player’s name one by one and press Enter.
-
-2. **Game Board**
-   - The board is 10x5 (50 tiles in total).
-   - Each tile has an effect such as:
-     - `+Score` – Gain points.
-     - `-Score` – Lose points.
-     - `Q?` – Answer a quiz question.
-     - `ZZZ` – Skip next turn.
-
-3. **In-Game Commands**
-   When it’s a player’s turn, the following options will appear:
-- Press `y` to roll the dice and continue.
-- Press `r` to restart the game.
-- Press `q` to quit the game.
-
-4. **Game Rules**
-- Players move according to the dice roll.
-- Landing on certain tiles will trigger special actions or events.
-- Quiz questions reward correct answers with points.
-- **The game only ends when all players reach the final tile** (Tile #50).
-- The winner is the player with the **highest score** at the end.
-
----
-
-## ⚙️ How to Compile & Run
-
-```bash
-g++ Src/backend/*.cpp Src/backend/Action/*.cpp Src/backend/Deck/*.cpp -o main
-./main
-
 #  Escape from F - Terminal Board Game
 
 ##  Program Documentation
@@ -115,8 +33,6 @@ g++ Src/backend/*.cpp Src/backend/Action/*.cpp Src/backend/Deck/*.cpp -o main
 - **Card.h / Card.cpp**  
   Represents a question card, including its category, question, choices, and correct answer.
 
-#### `Src/frontend/`
-- (Reserved for Unreal Engine 5 front-end code and assets.)
 
 #### `Docs/`
 - **UML Class Diagram.png**  
@@ -196,8 +112,37 @@ g++ Src/backend/*.cpp Src/backend/Action/*.cpp Src/backend/Deck/*.cpp -o main
   - Board consists of tiles that can trigger events or actions when players land on them.
 
 ---
+## 🕹️ How to Play
 
-##  Project Structure
+1. **Start the Game**
+   - Run the game with: `./main`
+   - Enter the number of players (2–4).
+   - Input each player’s name one by one and press Enter.
 
-- **Project Submitted** 28/5/68  
-- **Present Date** 29/5/68
+2. **Game Board**
+   - The board is 10x5 (50 tiles in total).
+   - Each tile has an effect such as:
+     - Gain points.
+     - Lose points.
+     - Answer a quiz question.
+     - Skip next turn.
+
+3. **In-Game Commands**
+   When it’s a player’s turn, the following options will appear:
+- Press `y` to roll the dice and continue.
+- Press `r` to restart the game.
+- Press `q` to quit the game.
+
+4. **Game Rules**
+- Players move according to the dice roll.
+- Landing on certain tiles will trigger special actions or events.
+- Quiz questions reward correct answers with points.
+- **The game only ends when all players reach the final tile** (Tile #50).
+- The winner is the player with the **highest score** at the end.
+
+---
+## ⚙️ How to Compile & Run
+
+```bash
+g++ Src/backend/*.cpp Src/backend/Action/*.cpp Src/backend/Deck/*.cpp -o main
+./main
