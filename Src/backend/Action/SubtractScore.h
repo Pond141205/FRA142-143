@@ -6,13 +6,18 @@
 
 class SubtractScore : public Action {
 public:
-    SubtractScore() {}
+    SubtractScore() {
+        static std::random_device rd;
+        static std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dist(15, 29);
+        point_ = dist(gen);
+    }
    
 
     bool Execute(Player& player, Deck& deck) override;
     std::string getActionName() const override { return "Subtract Score"; }
 
 private:
-    int point_ = 20;
+    int point_ ;
 
 };

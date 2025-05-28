@@ -11,18 +11,24 @@ bool ExtraClass::Execute(Player& player , Deck& deck) {
     deck.setCard();
     deck.shuffle();
     Card card = deck.drawCard();
-    std::cout << "Extra Class" << std::endl;
     card.affect(player);
     return true;
 }
 
 bool AddScore::Execute(Player& player, Deck& deck) {
 
-    std::cout << player.getName() << " has gained " << point_ << " points.\n";
-    player.updateScore(+point_);
-    return true;
+    
+        if (player.getScore() < 100){
+            std::cout << player.getName() << " has gained " << point_ << " points.\n";
+                player.updateScore(+point_);
+        }
+        if (player.getScore() == 100){
+            std::cout << player.getName() <<" points are limited. + " << 0 << " points." << std::endl;
+        } 
 
-}
+        return true;
+    }
+
 
 bool AcademicLeave::Execute(Player& player, Deck& deck){
 
@@ -30,12 +36,20 @@ bool AcademicLeave::Execute(Player& player, Deck& deck){
     std::cout << player.getName() << " is on academic leave and will skip the next turn.\n";
     return true;
 
-};
+}
 
 bool SubtractScore::Execute(Player& player, Deck& deck){
 
-    std::cout << player.getName() << " has lost " << point_ << " points.\n";
-    player.updateScore(-point_);
+    if (player.getScore() <= 100){
+        std::cout << player.getName() << "has lose -" << point_ << " points." << std::endl;
+            player.updateScore(-point_);
+    }
+    if (player.getScore() < point_){
+        
+        std::cout << player.getName() << "has aren't enough score."  << std::endl;
+            player.updateScore(-player.getScore());
+    }
+    
     return true;
     
 }

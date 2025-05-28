@@ -55,7 +55,7 @@
             int index = dist(gen);
             Card copy = deck_[index];
             deck_.erase(deck_.begin() + index);
-            std::cout << "Deck size: " << deck_.size() << std::endl;
+            // std::cout << "Deck size: " << deck_.size() << std::endl;
             return copy;
         }
         

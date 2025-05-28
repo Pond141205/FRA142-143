@@ -122,9 +122,10 @@ Board::Board()  {
     std::vector<Action*> actionPool;
 
     for (int i = 0; i < 3; ++i) actionPool.push_back(new AcademicLeave());
-    for (int i = 0; i < 5; ++i) actionPool.push_back(new SubtractScore());
+    for (int i = 0; i < 17; ++i) actionPool.push_back(new SubtractScore());
     for (int i = 0; i < 3; ++i) actionPool.push_back(new AddScore());
-    for (int i = 0; i < 10; ++i) actionPool.push_back(new ExtraClass());
+    for (int i = 0; i < 12; ++i) actionPool.push_back(new ExtraClass());
+    for (int i = 0; i < 15; ++i) actionPool.push_back(nullptr); // No action tiles
 
     std::shuffle(actionPool.begin(), actionPool.end(), std::default_random_engine(static_cast<unsigned>(time(nullptr))));
 
@@ -133,7 +134,7 @@ Board::Board()  {
     for (int i = 0; i < size_; ++i) {
         Action* action = nullptr;
 
-        if (i % 3 == 0 && i != 0 && actionIndex < actionPool.size()) {
+        if (i % 1 == 0 && i != 0 && actionIndex < actionPool.size()) {
             action = actionPool[actionIndex++];
         }
 

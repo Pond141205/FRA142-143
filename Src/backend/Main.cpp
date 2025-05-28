@@ -7,6 +7,8 @@
 #include "Action/SubtractScore.h"
 #include "Action/AddScore.h"
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 /*How to complie "g++ Main.cpp Core.cpp Deck.cpp Card.cpp Action\Action.cpp -o Main
    How to run the program
@@ -25,6 +27,13 @@ void printPlayerScores(const std::vector<Player>& players) {
     }
 }
 
+bool allPlayersAtLastTile(const std::vector<Player>& players) {
+    for (const auto& p : players) {
+        if (p.getPosition() < 49) return false;
+    }
+    return true;
+}
+
 int main() {
     std::cout << "Escape from F: Survive 50 tiles and avoid failing!\n";
     int numPlayers;
@@ -33,13 +42,19 @@ int main() {
     while (true) {
         std::cout << "Enter number of players (2-4): ";
         std::cin >> numPlayers;
-        if (numPlayers >= 2 && numPlayers <= 4) {
-            break; // ออกจากลูปถ้าถูกต้อง
-        }
-        std::cout << "Invalid number of players. Please enter between 2 and 4.\n";
+            if (std::cin.fail()) {
+                std::cin.clear(); // clear error state
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
+                std::cout << "Invalid input. Please enter a number between 2 and 4.\n";
+                continue;
+            }
+            if (numPlayers >= 2 && numPlayers <= 4) {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear rest of line
+                break;
+            }
+            std::cout << "Invalid number of players. Please enter between 2 and 4.\n";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear rest of line
     }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // <<== เพิ่มบรรทัดนี้
-
     Game game;
     game.setupPlayers(numPlayers);
 
@@ -61,34 +76,64 @@ int main() {
     int turn = 0;
     while (!gameOver) {
         Player& currentPlayer = players[turn % numPlayers];
+        if (currentPlayer.shouldSkipTurn()) {
+            std::cout << "Player " << currentPlayer.getName() << " is skipping this turn.\n";
+            currentPlayer.resetSkipTurn();
+            game.nextTurn();
+            ++turn; // เพิ่มตรงนี้เพื่อข้ามเทิร์น
+            continue;
+        }
+
+        if(currentPlayer.getPosition() == 49) {
+            std::cout << "Player " << currentPlayer.getName() << " has already reached the last tile.\n";
+            game.nextTurn();
+            ++turn; // เพิ่มตรงนี้เพื่อข้ามเทิร์น
+            continue;
+        }
 
         std::cout << "\nPlayer " << currentPlayer.getName() << "'s turn.\n";
         std::cout << "Roll Dice (y), Restart (r), Quit (q): ";
         char option;
         std::cin >> option;
 
+        if(std::cin.fail()) {
+            std::cin.clear(); // clear error state
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
+            std::cout << "Invalid input. Please enter 'y', 'r', or 'q'.\n";
+            continue;
+        }   
+
         if (option == 'q') {
             std::cout << "Quitting game...\n";
             break;
         } else if (option == 'r') {
+            #ifdef _WIN32
+               system("cls");
+            #else
+               system("clear");
+            #endif
             std::cout << "Restarting game...\n";
             return main();
         } else if (option == 'y') {
             int diceRoll = game.rollDice();
-            std::cout << "Dice rolled: " << diceRoll << "\n";
+            std::cout << "\n Dice rolled: " << diceRoll << "\n";
             currentPlayer.move(diceRoll);
 
-            // Check if reached the last tile
+            // ถ้าข้ามช่อง 50 ให้ไปหยุดที่ 50
+            if (currentPlayer.getPosition() > 49) {
+                currentPlayer.setPosition(49);
+            }
+
             if (currentPlayer.getPosition() >= 49) {
                 std::cout << "Player " << currentPlayer.getName() << " reached the last tile!\n";
-                gameOver = true;
             } else {
+                std::cout << "\n";
                 std::cout << "Player " << currentPlayer.getName() << " moves to tile " << currentPlayer.getPosition() + 1 << "\n";
             }
 
             
             if (board.getTile(currentPlayer.getPosition()).hasAction()) {
-                std::cout << "You landed on a tile with an action: " 
+                std::cout << "\n You landed on a tile with an action: " 
                           << board.getTile(currentPlayer.getPosition()).getActionName() << "\n";
                 
                   // Execute the action on the tile
@@ -96,12 +141,14 @@ int main() {
                 if (action) {
                     Deck deck;
                     if (action->Execute(currentPlayer, deck)) {
-                        std::cout << "Action executed successfully.\n";
+                        std::cout << "Action executed successfully: " ;
                     } else {
                         std::cout << "Action execution failed.\n";
-                    }
+                    } 
                 }
                
+            }else {
+                std::cout << "\n No action on this tile.\n";
             }
             
             
@@ -114,15 +161,20 @@ int main() {
             }
 
             board.updatePlayersOnTiles(game.getPlayers());
-
+            std::this_thread::sleep_for(std::chrono::seconds(5)); // 5 seconds
             #ifdef _WIN32
                system("cls");
             #else
                system("clear");
             #endif
-
             board.printBoard();
+
             printPlayerScores(game.getPlayers());
+
+            // หลังจบเทิร์นนี้ เช็กว่าทุกคนถึงช่อง 50 หรือยัง
+            if (allPlayersAtLastTile(players)) {
+                break; // ออกจากลูปเพื่อจบเกม
+            }
 
             game.nextTurn();
             ++turn; // เพิ่มตรงนี้
@@ -135,7 +187,7 @@ int main() {
 
     std::cout << "\nGame finished!\n";
     // หาผู้ชนะ (คะแนนมากสุด)
-    const auto& finalPlayers = game.getPlayers(); // <== เปลี่ยนชื่อ
+    const auto& finalPlayers = game.getPlayers(); 
     int maxPoints = -9999;
     std::string winner;
     for (const auto& p : finalPlayers) {
@@ -144,6 +196,4 @@ int main() {
             winner = p.getName();
         }
     }
-    std::cout << "Winner is " << winner << " with " << maxPoints << " points!\n";
-    return 0;
 }
