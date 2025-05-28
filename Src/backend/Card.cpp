@@ -25,6 +25,14 @@ void Card::affect(Player& player) {
                  } 
         } else {
             std::cout << "Wrong! -" << decrease_ << " points." << std::endl;
-            player.updateScore(-decrease_);
+            if (player.getScore() <= 100){
+            std::cout << player.getName() << " has lose -" << decrease_ << " points." << std::endl;
+                player.updateScore(-decrease_);
+            }
+            if (player.getScore() < decrease_){
+                
+                std::cout << player.getName() << " has aren't enough score."  << std::endl;
+                    player.updateScore(-player.getScore());
+            }
         }
     }

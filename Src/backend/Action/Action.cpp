@@ -41,12 +41,12 @@ bool AcademicLeave::Execute(Player& player, Deck& deck){
 bool SubtractScore::Execute(Player& player, Deck& deck){
 
     if (player.getScore() <= 100){
-        std::cout << player.getName() << "has lose -" << point_ << " points." << std::endl;
+        std::cout << player.getName() << " has lose -" << point_ << " points." << std::endl;
             player.updateScore(-point_);
     }
     if (player.getScore() < point_){
         
-        std::cout << player.getName() << "has aren't enough score."  << std::endl;
+        std::cout << player.getName() << " has aren't enough score."  << std::endl;
             player.updateScore(-player.getScore());
     }
     
