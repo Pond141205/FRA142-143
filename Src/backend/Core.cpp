@@ -122,8 +122,8 @@ Board::Board()  {
     std::vector<Action*> actionPool;
 
     for (int i = 0; i < 3; ++i) actionPool.push_back(new AcademicLeave());
-    for (int i = 0; i < 17; ++i) actionPool.push_back(new SubtractScore());
-    for (int i = 0; i < 3; ++i) actionPool.push_back(new AddScore());
+    for (int i = 0; i < 14; ++i) actionPool.push_back(new SubtractScore());
+    for (int i = 0; i < 6; ++i) actionPool.push_back(new AddScore());
     for (int i = 0; i < 12; ++i) actionPool.push_back(new ExtraClass());
     for (int i = 0; i < 15; ++i) actionPool.push_back(nullptr); // No action tiles
 

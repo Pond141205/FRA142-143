@@ -7,7 +7,7 @@ public:
     AddScore() {
         static std::random_device rd;
         static std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dist(1, 5);
+        std::uniform_int_distribution<> dist(1, 7);
         point_ = dist(gen);
     }
 
