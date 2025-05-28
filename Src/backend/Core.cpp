@@ -8,6 +8,7 @@
 #include "Action/ExtraClass.h"
 #include <cstdlib>   //  rand()
 #include <ctime>     //  srand()
+#include <iomanip>   //  std::setw
 #include <iostream>
 
 Game::Game() : currentPlayerIndex_(0) {
@@ -105,18 +106,26 @@ void Player::resetSkipTurn() {
     skip_turn_ = false;
 }
 
+bool Tile::hasAction() const {
+    return action_ != nullptr;
+}
+
+std::string Tile::getActionName() const {
+    return action_ ? action_->getActionName() : "No Action";
+}
+
+
+
 
 
 Board::Board()  {
-std::vector<Action*> actionPool;
+    std::vector<Action*> actionPool;
 
-    
     for (int i = 0; i < 3; ++i) actionPool.push_back(new AcademicLeave());
     for (int i = 0; i < 5; ++i) actionPool.push_back(new SubtractScore());
     for (int i = 0; i < 3; ++i) actionPool.push_back(new AddScore());
     for (int i = 0; i < 10; ++i) actionPool.push_back(new ExtraClass());
 
-    
     std::shuffle(actionPool.begin(), actionPool.end(), std::default_random_engine(static_cast<unsigned>(time(nullptr))));
 
     int actionIndex = 0;
@@ -132,17 +141,54 @@ std::vector<Action*> actionPool;
     }
 }
 
-void Board::printBoard() const {
-    for (const auto& tile : tiles_) {
-        std::cout << "Tile " << tile.getIndex() << ": ";
-        if (tile.hasAction()) {
-            std::cout << "Action available.\n";
-        } else {
-            std::cout << "No action.\n";
+void Board::updatePlayersOnTiles(const std::vector<Player>& players) {
+    for (auto& tile : tiles_) {
+        tile.playersOnTile.clear();
+    }
+    for (const auto& player : players) {
+        int pos = player.getPosition();
+        if (pos >= 0 && pos < static_cast<int>(tiles_.size())) {
+            tiles_[pos].playersOnTile.push_back(player.getName());
         }
     }
 }
 
-bool tile::hasAction() const {
-    return action_ != nullptr;
+
+
+void Board::printBoard() const {
+    const int width = 20, rows = 10, cols = 5;
+    for (int row = 0; row < rows; ++row) {
+        for (int col = 0; col < cols; ++col)
+            std::cout << "+" << std::string(width, '-');
+        std::cout << "+\n";
+        for (int col = 0; col < cols; ++col) {
+            int index = row * cols + col;
+            std::string label = "Tile " + std::to_string(index + 1);
+            std::cout << "|" << std::setw(width) << std::left << label;
+        }
+        std::cout << "|\n";
+        for (int col = 0; col < cols; ++col) {
+            int index = row * cols + col;
+            std::cout << "|" << std::setw(width) << std::left << tiles_[index].getActionName();
+        }
+        std::cout << "|\n";
+        // แสดงชื่อผู้เล่นในแต่ละช่อง
+        for (int col = 0; col < cols; ++col) {
+            int index = row * cols + col;
+            std::string pStr = "Player: ";  
+            for (const auto& name : tiles_[index].playersOnTile)
+                pStr += name + " ";
+            std::cout << "|" << std::setw(width) << std::left << pStr;
+        }
+        std::cout << "|\n";
+    }
+    for (int col = 0; col < cols; ++col)
+        std::cout << "+" << std::string(width, '-');
+    std::cout << "+\n";
 }
+
+int Board::getSize() const {
+    return tiles_.size();
+}
+
+

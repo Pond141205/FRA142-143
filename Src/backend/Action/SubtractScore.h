@@ -10,8 +10,9 @@ public:
    
 
     bool Execute(Player& player, Deck& deck) override;
+    std::string getActionName() const override { return "Subtract Score"; }
 
 private:
-int point_ = 20;
+    int point_ = 20;
 
 };

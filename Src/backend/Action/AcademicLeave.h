@@ -8,6 +8,8 @@ public:
     AcademicLeave() {}
 
     bool Execute(Player& player, Deck& deck) override;
+
+    std::string getActionName() const override { return "Academic Leave";}
 };
 
 

@@ -12,5 +12,7 @@ public:
     virtual ~Action() {}
     
     virtual bool Execute(Player& player, Deck& deck) {return true; }
+
+    virtual std::string getActionName() const { return "Action"; }
    
 };

@@ -24,7 +24,7 @@ void Card::affect(Player& player) {
                      std::cout << "Correct! ... But your points are limited. + " << 0 << " points." << std::endl;
                  } 
         } else {
-            std::cout << "Wrong! " << decrease_ << " points." << std::endl;
+            std::cout << "Wrong! " << decrease_ << " - points." << std::endl;
             player.updateScore(-decrease_);
         }
     }

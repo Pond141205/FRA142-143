@@ -9,7 +9,8 @@
 
 class Deck; // Forward declaration
 class Card; // Forward declaration
-class Action;
+class Action; // Forward declaration
+
 
 
 class Player {
@@ -26,14 +27,16 @@ public:
     bool shouldSkipTurn() const;  
     void resetSkipTurn();         
 
-
+    // เพิ่ม setter สำหรับ Board หรือการรีเซ็ตค่า
+    void setPosition(int pos) { position_ = pos; }
+    void setName(const std::string& name) { name_ = name; }
+    void setScore(int score) { score_ = score; }
 
 private:
-
     std::string name_;
-    int position_;
-    int score_;
-    bool skip_turn_;
+    int position_ = 0;
+    int score_ = 100;
+    bool skip_turn_ = false;
 };
 
 
@@ -61,15 +64,19 @@ private:
 
 
 
-class tile {
+class Tile {
 public:
-    tile(int index, Action* action) : index_(index), action_(action){}
+    Tile(int index, Action* action) : index_(index), action_(action){}
     
+    std::vector<std::string> playersOnTile;
+
     void triggerAction(Player& player, Deck& deck);
 
     int getIndex() const { return index_; }
 
-    // Action getAction() const { return action_; }
+    std::string getActionName() const ;
+
+    Action* getAction() const { return action_; }
 
     // void setAction(const Action& action) { action_ = action; }
 
@@ -82,17 +89,28 @@ private:
 };
 
 
+// class Tile {
+// public:
+//     std::string effect;
+//     int pointChange;
+//     std::vector<std::string> playersOnTile;
+
+//     Tile(const std::string& e = "normal", int change = 0)
+//         : effect(e), pointChange(change) {}
+// };
+
 class Board {
 public:
     Board();
-    
     void printBoard() const;
-        
-    int getSize() const { return size_; };
+    int getSize() const;
+    int applyTileEffect(Player& player);
+    void updatePlayersOnTiles(const std::vector<Player>& players); // เพิ่มบรรทัดนี้
+    const Tile& getTile(int index) const { return tiles_[index]; }
 
 private:
-    int size_ = 50; // Example size, can be adjusted
-    std::vector<tile> tiles_; // Vector of tiles on the board
+    int size_ = 50;
+    std::vector<Tile> tiles_;
 };
 
 
