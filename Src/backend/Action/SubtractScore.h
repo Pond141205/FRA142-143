@@ -11,7 +11,7 @@ public:
     SubtractScore() {
         static std::random_device rd;
         static std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dist(14, 21);
+        std::uniform_int_distribution<> dist(9, 16);
         point_ = dist(gen);
     }
    

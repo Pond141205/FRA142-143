@@ -147,9 +147,7 @@ int main() {
                 if (action) {
                     Deck deck;
                     if (action->Execute(currentPlayer, deck)) {
-                        std::cout << "Action executed successfully: " ;
-                    } else {
-                        std::cout << "Action execution failed.\n";
+                        std::cout << "\n" ;
                     } 
                 }
                
@@ -192,9 +190,8 @@ int main() {
     }
 
     std::cout << "\nGame finished!\n";
-    // หาผู้ชนะ (คะแนนมากสุด)
     const auto& finalPlayers = game.getPlayers(); 
-    int maxPoints = -9999;
+    int maxPoints;
     std::string winner;
     for (const auto& p : finalPlayers) {
         if (p.getScore() > maxPoints) {
@@ -202,5 +199,8 @@ int main() {
             winner = p.getName();
         }
     }
+    std::cout << "Winner: " << winner << " with " << maxPoints << " points!\n";
+    std::cout << "Thank you for playing!\n";
+    return 0;
 }
 
