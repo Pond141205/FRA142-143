@@ -10,6 +10,7 @@
 #include <ctime>     //  srand()
 #include <iomanip>   //  std::setw
 #include <iostream>
+#include <cctype>
 
 // Core.cpp
 // Implements core game logic for Player, Game, Tile, and Board.
@@ -23,12 +24,16 @@ Game::Game() : currentPlayerIndex_(0) {
 }
 
 void Game::setupPlayers(int numPlayers){
+    
 
-    for (int i = 0; i < numPlayers; ++i){
+    for (int i = 0; i < numPlayers; ++i) {
         std::string name;
-        std::cout << "Enter name" << (i + 1) << ": ";
-        std::cin >> name;
-
+        while (true) {
+            std::cout << "Enter name" << (i + 1) << " (max 8 chars): ";
+            std::cin >> name;
+            if (name.length() <= 8) break;
+            std::cout << "Name too long! Please enter up to 8 characters.\n";
+        }
         Player newPlayer(name);
         players_.push_back(newPlayer);
     }

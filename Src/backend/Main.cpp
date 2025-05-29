@@ -100,14 +100,15 @@ int main() {
         std::cout << "\nPlayer " << currentPlayer.getName() << "'s turn.\n";
         std::cout << "Roll Dice (y), Restart (r), Quit (q): ";
         char option;
-        std::cin >> option;
+        std::string input;
+        std::cin >> input;
 
-        if(std::cin.fail()) {
-            std::cin.clear(); // clear error state
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
-            std::cout << "Invalid input. Please enter 'y', 'r', or 'q'.\n";
-            continue;
-        }   
+        if (input.length() != 1 || (input[0] != 'y' && input[0] != 'r' && input[0] != 'q')) {
+        std::cout << "Invalid input. Please enter 'y', 'r', or 'q'.\n";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ล้าง buffer
+        continue;
+        }
+        option = input[0]; 
 
         if (option == 'q') {
             std::cout << "Quitting game...\n";
