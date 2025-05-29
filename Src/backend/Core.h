@@ -56,8 +56,7 @@ public:
     const std::vector<Player>& getPlayers() const;
 
 private:
-    std::vector<Player> players_;
-    Board board_;   
+    std::vector<Player> players_; 
     Deck* deck_;     
     int currentPlayerIndex_;
 };
