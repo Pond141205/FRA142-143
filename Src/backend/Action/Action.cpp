@@ -4,6 +4,9 @@
 #include "ExtraClass.h"
 #include "AddScore.h"
 
+// Action/Action.cpp
+// Implements Execute methods for all Action subclasses.
+// Each action defines its effect on the player (e.g., add/subtract score, skip turn, quiz).
 
 
 bool ExtraClass::Execute(Player& player , Deck& deck) {

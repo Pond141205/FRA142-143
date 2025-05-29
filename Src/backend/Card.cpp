@@ -1,3 +1,7 @@
+// Card.cpp
+// Implements Card class methods.
+// Handles displaying the question, reading player input, and updating player score based on answer.
+
 #include "Card.h"
 
 Card::Card(const std::string& des,

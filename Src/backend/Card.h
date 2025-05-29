@@ -4,8 +4,14 @@
 #include <iostream>
 #include "Deck.h"
 
-class Player; // Forward declaration
+// Card.h
+// Declares Card class representing a quiz/question card.
+// Stores question, choices, correct answer, and point values for correct/incorrect answers.
+// Provides method to affect a Player based on their answer.
 
+
+
+class Player; // Forward declaration
 class Card {
 
 public:
@@ -13,7 +19,7 @@ public:
     
     void affect(Player& player);
 
-    const std::string& getDescription() const { return description_; }
+    
 
 private:
     std::vector<Card> deck_;

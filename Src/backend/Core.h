@@ -57,7 +57,7 @@ public:
 
 private:
     std::vector<Player> players_;
-    //Board board_;   
+    Board board_;   
     Deck* deck_;     
     int currentPlayerIndex_;
 };
@@ -70,15 +70,11 @@ public:
     
     std::vector<std::string> playersOnTile;
 
-    void triggerAction(Player& player, Deck& deck);
-
     int getIndex() const { return index_; }
 
     std::string getActionName() const ;
 
     Action* getAction() const { return action_; }
-
-    // void setAction(const Action& action) { action_ = action; }
 
     bool hasAction() const ;
 
@@ -89,22 +85,11 @@ private:
 };
 
 
-// class Tile {
-// public:
-//     std::string effect;
-//     int pointChange;
-//     std::vector<std::string> playersOnTile;
-
-//     Tile(const std::string& e = "normal", int change = 0)
-//         : effect(e), pointChange(change) {}
-// };
-
 class Board {
 public:
     Board();
     void printBoard() const;
     int getSize() const;
-    int applyTileEffect(Player& player);
     void updatePlayersOnTiles(const std::vector<Player>& players); // เพิ่มบรรทัดนี้
     const Tile& getTile(int index) const { return tiles_[index]; }
 
@@ -112,5 +97,12 @@ private:
     int size_ = 50;
     std::vector<Tile> tiles_;
 };
+
+// Core.h
+// Declares core classes: Player, Game, Tile, Board.
+// - Player: Stores player state (name, position, score, skip turn).
+// - Game: Manages players, board, deck, and turn logic.
+// - Tile: Represents a board tile, may have an Action.
+// - Board: Holds all tiles, manages board display and player positions.
 
 

@@ -146,3 +146,29 @@
 ```bash
 g++ Src/backend/*.cpp Src/backend/Action/*.cpp Src/backend/Deck/*.cpp -o main
 ./main
+
+
+ **Project Structure**
+
+- `.gitignore`
+- `README.md`
+- `ToDoList.md`
+- `Src/`
+  - `backend/`
+    - `Main.cpp`
+    - `Core.h`
+    - `Core.cpp`
+    - `Action/`
+      - `Action.h` – Interface
+      - `AddScore.h`
+      - `SubtractScore.h`
+      - `ExtraClass.h`
+      - `AcademicLeave.h`
+    - `Deck/`
+      - `Deck.h`
+      - `Card.h`
+      - `Deck.cpp`
+      - `Card.cpp`
+  - `frontend/`
+- `Docs/`
+  - `UML Class Diagram.png`

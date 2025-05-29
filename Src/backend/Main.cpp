@@ -20,6 +20,12 @@
 >> ./Main   */
 
 
+// Main.cpp
+// Entry point for "Escape from F" terminal board game.
+// Handles game initialization, player setup, main game loop, user input, and game flow.
+// Interacts with Game, Board, Player, and Action classes to run the game.
+
+
 void printPlayerScores(const std::vector<Player>& players) {
     std::cout << "\nPlayer Scores:\n";
     for (const auto& player : players) {
@@ -197,3 +203,4 @@ int main() {
         }
     }
 }
+

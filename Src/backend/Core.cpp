@@ -11,6 +11,13 @@
 #include <iomanip>   //  std::setw
 #include <iostream>
 
+// Core.cpp
+// Implements core game logic for Player, Game, Tile, and Board.
+// - Player: Movement, score updates, skip turn logic.
+// - Game: Player setup, turn management, dice rolling, game end check.
+// - Tile: Action handling and display.
+// - Board: Tile initialization, board printing, updating player positions.
+
 Game::Game() : currentPlayerIndex_(0) {
     std::srand(std::time(nullptr)); // seed random
 }
@@ -26,9 +33,6 @@ void Game::setupPlayers(int numPlayers){
         players_.push_back(newPlayer);
     }
 
-    // for (int i = 0; i < players_.size(); ++i){
-    //      std::cout << "Player " << (i + 1) << ": " << players_[i].getName() << std::endl;
-    // }
 }
 
 

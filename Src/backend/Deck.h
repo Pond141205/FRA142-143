@@ -7,6 +7,10 @@
 #include "Card.h"
 #include <iostream>
 
+// Deck.h
+// Declares Deck class for managing a collection of Card objects.
+// Provides methods to set up, shuffle, and draw cards for quiz actions.
+
 class Card;
 
 class Deck {

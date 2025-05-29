@@ -2,7 +2,9 @@
 
 #include "Action.h"
 
-
+// Action/SubtractScore.h
+// Declares SubtractScore class, a subclass of Action.
+// Subtracts random points from the player's score when executed.
 
 class SubtractScore : public Action {
 public:

@@ -1,3 +1,7 @@
+// Deck.cpp
+// Implements Deck class methods.
+// Initializes quiz cards, shuffles the deck, and provides random card drawing for quiz actions.
+
 #include "Deck.h"
 
 
@@ -36,7 +40,6 @@
     
     Deck::Deck() {
         setCard();
-        // std::srand(static_cast<unsigned int>(std::time(nullptr)));
     }
 
 
@@ -55,7 +58,6 @@
             int index = dist(gen);
             Card copy = deck_[index];
             deck_.erase(deck_.begin() + index);
-            // std::cout << "Deck size: " << deck_.size() << std::endl;
             return copy;
         }
         
@@ -63,4 +65,3 @@
         return Card("Empty Card", "", {}, 0);
     }
 
-    

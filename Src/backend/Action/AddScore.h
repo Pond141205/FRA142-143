@@ -2,6 +2,10 @@
 
 #include "Action.h"
 
+// Action/AddScore.h
+// Declares AddScore class, a subclass of Action.
+// Adds random points to the player's score when executed.
+
 class AddScore: public Action {
 public:
     AddScore() {
