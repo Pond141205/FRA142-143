@@ -18,7 +18,20 @@ void Card::affect(Player& player) {
         }
         std::cout << "Enter your choice : ";
         int answer;
-        std::cin >> answer;
+        while (true) {
+            std::cout << "Enter your choice: ";
+            std::cin >> answer;
+            if (std::cin.fail() || answer < 1 || answer > static_cast<int>(choices_.size())) {
+                std::cin.clear(); // ล้าง error state
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ล้าง buffer
+                std::cout << "Invalid input. Please enter a number between 1 and " << choices_.size() << ".\n";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ล้าง buffer กรณีมี input เกิน
+                break;
+        }
+}
+
+
         if (answer - 1 == correct_) {
                  if (player.getScore() < 100){
                     std::cout << "Correct! +" << increase_ << " points." << std::endl;
