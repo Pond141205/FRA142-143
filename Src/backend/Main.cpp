@@ -166,7 +166,7 @@ int main() {
             }
 
             board.updatePlayersOnTiles(game.getPlayers());
-            std::this_thread::sleep_for(std::chrono::seconds(5)); // 5 seconds
+            std::this_thread::sleep_for(std::chrono::seconds(3)); // 5 seconds
             #ifdef _WIN32
                system("cls");
             #else
