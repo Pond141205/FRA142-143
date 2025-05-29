@@ -75,7 +75,6 @@
 - `Game::start()` – Initializes players, board, and game state.
 - `Game::playTurn()` – Controls the main turn logic: dice roll, movement, and action.
 - `Player::move(int steps)` – Moves the player by a given number of steps.
-- `Tile::triggerAction(Player* p)` – Executes the action associated with the tile.
 - `Game::checkGameEnd()` – Checks for game end conditions (win/loss).
 
 #### Tile Action Functions (from `Action`)
@@ -86,8 +85,9 @@
 
 #### Card & Deck Functions
 - `Deck::drawCard()` – Randomly draws a card from the deck.
-- `Card::displayQuestion()` – Displays the card’s question and choices.
-- `Card::isCorrectAnswer(std::string input)` – Checks if the answer is correct.
+- `Deck::setCard()` – Prepare card to Deck.
+- `Deck::shuffle()` – Shuffle card in Deck.
+- `Card::affect(Player& player)` – Apply affect to players.
 
 ---
 
